@@ -6,8 +6,8 @@ class User < ApplicationRecord
     private
     def generate_token
         loop do
-         pre_token= secureRandom.hex
-         return pre_token User.exists? unless({toke:pre_token}) 
+         pre_token=SecureRandom.hex
+         return pre_token unless User.exists?({toke:pre_token}) 
         end
     end
     

@@ -38,11 +38,25 @@ module Api
             end
 
             def update #put|pacth/param
+                @post= Post.find(params[:id])
                 
+                if @post.update  post_params
+   
+                   render json: @post, status: :update
+                 else
+                   render json: @pots.errors, status: :unprocessable_entity
+                  
+               end 
             end
 
             def destroy #delete/param
-              
+                @post= Post.find(params[:id])
+                if @post.destroy  
+                   render json: @post,status: :delete
+                 else
+                   render json: @post.errors, status: :unprocessable_entity
+                  
+               end  
             end
             
 private 
